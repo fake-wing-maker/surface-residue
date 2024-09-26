@@ -1,30 +1,21 @@
-// for image shiffle
-const images = document.querySelectorAll('.shuffle-image');
-let activeImageIndex = -1;
+const images = document.querySelectorAll('.image-container img');
 
+// Function to shuffle images when clicked
 function shuffleImages() {
-    images.forEach((image, index) => {
-        if (index === activeImageIndex) {
-            image.classList.add('inactive');
-            image.classList.remove('active');
-        }
+    images.forEach(image => {
+        const randomX = Math.floor(Math.random() * 100) - 50; // Random X offset
+        const randomY = Math.floor(Math.random() * 100) - 50; // Random Y offset
+        image.style.transform = `translate(${randomX}px, ${randomY}px)`;
     });
-
-    // Randomly select a new image to activate
-    let newIndex;
-    do {
-        newIndex = Math.floor(Math.random() * images.length);
-    } while (newIndex === activeImageIndex);
-
-    activeImageIndex = newIndex;
-    images[activeImageIndex].classList.add('active');
-    images[activeImageIndex].classList.remove('inactive');
 }
 
-// Set up click event to shuffle images
+// Function to bring hovered image on top
 images.forEach(image => {
     image.addEventListener('click', shuffleImages);
+
+    image.addEventListener('mouseover', () => {
+        images.forEach(img => img.classList.remove('active'));
+        image.classList.add('active');
+    });
 });
 
-// Initialize the first image as active
-shuffleImages();
