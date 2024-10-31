@@ -4,7 +4,8 @@ const images = Array.from(document.querySelectorAll('.image-container'));
 // Enable sticky effect for an element
 function enableStickyEffect(element) {
   element.style.position = 'sticky';
-  element.style.top = '0'; // Stick to the top of the viewport
+  element.style.top = '50%'; // Stick to the top of the viewport
+  element.style.transform = 'translateY(-50%)';
 }
 
 // Function to initialize image display

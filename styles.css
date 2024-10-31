@@ -58,9 +58,10 @@ a:hover {
 
 .image-container img {
     position: sticky;
-    top: 0;
+    top: 50%;
+    /* transform: translateY(-50%); */
     width: 90%;
-    max-height: 100vh;
+    max-height: 90vh;
     object-fit: contain;
     filter: url(#threshold) invert(1) grayscale(100%);
     transition: filter 0.2s; /* Smooth transition on filter change */
